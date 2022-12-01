@@ -10,6 +10,7 @@ function App() {
   const { getProducts } = useContentful();
   const [products, setProducts] = React.useState<ProductProps[] | undefined>(undefined);
   const [filteredProducts, setFilteredProducts] = React.useState<ProductProps[] | undefined>(undefined);
+  const [isActive, setIsActive] = React.useState('all');
 
   React.useEffect(() => {
     getProducts().then((res) => {
@@ -20,6 +21,7 @@ function App() {
   }, [])
 
   const filterProducts = (category: string) => {
+    setIsActive(category);
     if (category === 'all') {
       return setFilteredProducts(products);
     }
@@ -34,7 +36,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
       </header>
       <main>
-        <Filters products={products} filterProducts={filterProducts} />
+        <Filters products={products} filterProducts={filterProducts} isActive={isActive} />
         <section>
           {filteredProducts?.map((product) => <Product product={product} key={product.title} />)}
         </section>

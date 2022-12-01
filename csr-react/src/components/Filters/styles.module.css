@@ -14,7 +14,8 @@
     font-weight: 600;
 }
 
-.filters button:hover {
+.filters button:hover,
+button.active {
     background-color: green;
     color: white;
 }

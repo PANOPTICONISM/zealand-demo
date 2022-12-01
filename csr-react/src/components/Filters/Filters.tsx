@@ -5,10 +5,13 @@ import styles from "./styles.module.css";
 
 export const Filters = ({
     products,
-    filterProducts }: {
-        products: ProductProps[] | undefined,
-        filterProducts: (category: string) => void
-    }) => {
+    filterProducts,
+    isActive
+}: {
+    products: ProductProps[] | undefined,
+    filterProducts: (category: string) => void,
+    isActive: string,
+}) => {
     const [categories, setCategories] = React.useState<string[]>([]);
 
     React.useEffect(() => {
@@ -23,9 +26,12 @@ export const Filters = ({
 
     return (
         <div className={styles.filters}>
-            <button onClick={() => filterProducts('all')}>All</button>
+            <button onClick={() => filterProducts('all')} className={isActive === 'all' ? styles.active : ""}>All</button>
             {categories?.map((category, index) =>
-                <button onClick={() => filterProducts(category)} key={index}>{category}</button>)}
+                <button onClick={() => filterProducts(category)}
+                    key={index}
+                    className={isActive === category ? styles.active : ""}
+                >{category}</button>)}
         </div>
     )
 }
