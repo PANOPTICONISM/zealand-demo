@@ -1,0 +1,22 @@
+article {
+    border: 1px solid gray;
+    padding: 30px;
+    max-width: 350px;
+}
+
+article h2 {
+    font-size: 18px;
+}
+
+.image {
+    max-width: 300px;
+}
+
+article .price {
+    font-weight: 900;
+    font-size: 22px;
+}
+
+article .desc {
+    margin-bottom: 0;
+}

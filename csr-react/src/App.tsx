@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import useContentful from './hooks/useContentful';
 import { ProductProps } from './types/types';
+import { Product } from './components/Product/Product';
 
 function App() {
   const { getProducts } = useContentful();
@@ -20,7 +21,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
       </header>
       <main>
-        ...
+        {products?.map((product) => <Product product={product} />)}
       </main>
     </div>
   );

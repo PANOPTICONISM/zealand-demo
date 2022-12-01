@@ -4,6 +4,7 @@ export type EntryProps = {
             title: string,
             category: Array<string>,
             price: string,
+            description: string,
             image: {
                 fields: {
                     description: string,
@@ -28,6 +29,7 @@ export type ProductProps = {
     title: string,
     category: Array<string>,
     price: string,
+    description: string,
     image: {
         url: string,
         fileName: string,
