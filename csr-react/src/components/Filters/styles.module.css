@@ -1,0 +1,20 @@
+.filters {
+    text-align: center;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 20px;
+}
+
+.filters button {
+    background-color: transparent;
+    border: 1px solid grey;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.filters button:hover {
+    background-color: green;
+    color: white;
+}

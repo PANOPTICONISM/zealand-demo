@@ -11,9 +11,9 @@
   max-width: 60px;
 }
 
-main {
+main section {
   display: grid;
-  gap: 30px;
+  gap: 15px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-items: center;
 }
