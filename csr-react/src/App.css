@@ -11,9 +11,14 @@
   max-width: 60px;
 }
 
+main {
+  max-width: 1325px;
+  margin: auto;
+}
+
 main section {
   display: grid;
   gap: 15px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  justify-items: center;
+  grid-template-columns: repeat(auto-fit, 320px);
+  justify-content: center;
 }
