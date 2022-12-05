@@ -3,23 +3,13 @@ import React from 'react';
 import Image from 'next/image';
 import { Filters } from '../components/Filters/Filters';
 import { Product } from '../components/Product/Product';
-import useContentful from '../hooks/useContentful';
 import styles from '../styles/Home.module.css';
-import { ProductProps } from '../types/types';
+import { EntryProps, ProductProps } from '../types/types';
+import { createClient } from 'contentful';
 
-export default function Home() {
-  const { getProducts } = useContentful();
-  const [products, setProducts] = React.useState<ProductProps[] | undefined>(undefined);
-  const [filteredProducts, setFilteredProducts] = React.useState<ProductProps[] | undefined>(undefined);
+export default function Home({ products }: { products: ProductProps[] }) {
+  const [filteredProducts, setFilteredProducts] = React.useState<ProductProps[]>(products);
   const [isActive, setIsActive] = React.useState('all');
-
-  React.useEffect(() => {
-    getProducts().then((res) => {
-      setProducts(res);
-      setFilteredProducts(res);
-    })
-    console.log('running')
-  }, [])
 
   const filterProducts = (category: string) => {
     setIsActive(category);
@@ -49,4 +39,25 @@ export default function Home() {
       </main>
     </div>
   )
+}
+
+
+export const getServerSideProps = async () => {
+  const client = createClient({
+    space: '3la13s77318z',
+    accessToken: 'lxuCv402fN4c_ZQPe12Ec8rhlRdrS-p9-816Nz6dbQY',
+    host: 'cdn.contentful.com'
+  })
+
+  try {
+    const entries: EntryProps = await client.getEntries();
+    const fields = entries.items.map((entry) => {
+      const image = entry.fields.image.fields.file;
+
+      return { ...entry.fields, image }
+    })
+    return { props: { products: fields } }
+  } catch (err) {
+    console.log(err);
+  }
 }
