@@ -1,0 +1,12 @@
+.container {
+  max-width: 1370px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.container section {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, 320px);
+  justify-content: center;
+}

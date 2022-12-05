@@ -1,0 +1,17 @@
+.header {
+    text-align: center;
+    padding: 30px;
+}
+
+.nav ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    gap: 30px;
+}
+
+.active {
+    color: blue;
+}
