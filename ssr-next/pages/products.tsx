@@ -1,6 +1,4 @@
 import { createClient } from 'contentful';
-import { Head } from 'next/document';
-import Image from 'next/image';
 import React from 'react';
 import { Filters } from '../components/Filters/Filters';
 import Navigation from '../components/Navigation/Navigation';
