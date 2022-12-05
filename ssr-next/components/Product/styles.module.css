@@ -1,0 +1,33 @@
+.article {
+    border: 1px solid gray;
+    padding: 30px;
+    max-width: 320px;
+    position: relative;
+}
+
+.article span {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: yellow;
+    padding: 6px 10px;
+}
+
+.article h2 {
+    font-size: 18px;
+}
+
+.image {
+    max-width: 300px;
+    width: 100%;
+}
+
+.article .price {
+    font-weight: 900;
+    font-size: 22px;
+}
+
+.article .desc {
+    margin-bottom: 0;
+}
