@@ -1,23 +1,39 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import useContentful from './hooks/useContentful';
-import { ProductProps } from './types/types';
+import { EntryProps, ProductProps } from './types/types';
 import { Product } from './components/Product/Product';
 import { Filters } from './components/Filters/Filters';
+import { createClient } from 'contentful';
 
 function App() {
-  const { getProducts } = useContentful();
   const [products, setProducts] = React.useState<ProductProps[] | undefined>(undefined);
   const [filteredProducts, setFilteredProducts] = React.useState<ProductProps[] | undefined>(undefined);
   const [isActive, setIsActive] = React.useState('all');
 
   React.useEffect(() => {
+    const client = createClient({
+      space: '3la13s77318z',
+      accessToken: 'lxuCv402fN4c_ZQPe12Ec8rhlRdrS-p9-816Nz6dbQY',
+      host: 'cdn.contentful.com'
+    })
+    const getProducts = async () => {
+      try {
+        const entries: EntryProps = await client.getEntries();
+        const fields = entries.items.map((entry) => {
+          const image = entry.fields.image.fields.file;
+
+          return { ...entry.fields, image }
+        })
+        return fields;
+      } catch (err) {
+        console.log(err);
+      }
+    }
     getProducts().then((res) => {
       setProducts(res);
       setFilteredProducts(res);
     })
-    console.log('running')
   }, [])
 
   const filterProducts = (category: string) => {
