@@ -35,7 +35,11 @@ const Products = ({ products }: { products: ProductProps[] }) => {
 
 export default Products;
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async ({ req, res }: any) => {
+    res.setHeader(
+        'Cache-Control',
+        'public, s-maxage=10, stale-while-revalidate=59'
+    )
     const client = createClient({
         space: '3la13s77318z',
         accessToken: 'lxuCv402fN4c_ZQPe12Ec8rhlRdrS-p9-816Nz6dbQY',
