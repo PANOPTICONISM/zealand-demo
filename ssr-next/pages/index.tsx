@@ -9,7 +9,7 @@ export default function Home() {
     <div className={styles.container}>
       <Navigation />
       <main>
-        <h1>Homepage</h1>
+        <h1>Welcome to the Next (SSR) store</h1>
       </main>
     </div>
   )

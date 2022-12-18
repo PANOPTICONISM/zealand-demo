@@ -6,7 +6,7 @@ const Homepage = () => {
         <div className={styles.container}>
             <Navigation />
             <main>
-                <h1>Homepage</h1>
+                <h1>Welcome to the React (CSR) store</h1>
             </main>
         </div>
     )
